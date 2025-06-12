@@ -1,0 +1,565 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Corpo */
+  body {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+  
+  /* Container principal */
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+  }
+  
+  /* Título Principal */
+  .titulo-principal {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2.5em, 5vw, 4em);
+    color: #d6336c;
+    margin: 40px 0 20px 0;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  /* Texto animado */
+  .texto-animado {
+    opacity: 0;
+    animation: fadeInUp 2s ease-out 0.5s forwards;
+  }
+  
+  /* Nome especial */
+  .nome-especial {
+    font-size: 1.2em;
+    color: #ff1493;
+    font-weight: 700;
+    animation: pulseGlow 2s infinite;
+  }
+  
+  /* Coração pulsante */
+  .coracao-pulsante {
+    font-size: 1.5em;
+    animation: heartBeat 1.5s infinite;
+  }
+  
+  /* Botões */
+  .botao-container {
+    display: flex;
+    gap: 20px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .botao-magico {
+    background: linear-gradient(45deg, #ff69b4, #ff1493, #dc143c);
+    background-size: 200% 200%;
+    color: white;
+    border: none;
+    padding: 18px 35px;
+    font-size: 1.1em;
+    font-weight: 500;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(255, 20, 147, 0.3);
+    animation: gradientShift 3s ease infinite;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .botao-magico:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(255, 20, 147, 0.4);
+  }
+  
+  .botao-magico:active {
+    transform: translateY(-1px);
+  }
+  
+ /* Container principal do player */
+.botao-musica {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #eb28ca, #fa27de);
+    border-radius: 50px;
+    padding: 8px 20px 8px 8px;
+    box-shadow: 0 4px 15px rgb(230, 42, 255);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Arial', sans-serif;
+    color: white;
+    user-select: none;
+  }
+  
+  .botao-musica:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(214, 53, 174, 0.849);
+  }
+  
+  /* Botão de play/pause */
+  .play-button {
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+  
+  .play-button:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Ícone de play */
+  .play-icon {
+    width: 0;
+    height: 0;
+    border-left: 12px solid #1db954;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    margin-left: 3px;
+    transition: all 0.3s ease;
+  }
+  
+  /* Ícone de pause (quando ativo) */
+  .botao-musica.playing .play-icon {
+    border: none;
+    width: 12px;
+    height: 16px;
+    background: linear-gradient(to right, #cc14bd 0%, #e020b0 35%, transparent 35%, transparent 65%, #d821b0 65%, #f72eb4 100%);
+    margin-left: 0;
+  }
+  
+  /* Informações da música */
+  .music-info {
+    display: flex;
+    flex-direction: column;
+    margin-right: 15px;
+  }
+  
+  .song-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  
+  .artist-name {
+    font-size: 12px;
+    opacity: 0.8;
+  }
+  
+  /* Ondas sonoras animadas */
+  .sound-waves {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+  
+  .wave {
+    width: 3px;
+    background: white;
+    border-radius: 2px;
+    animation: wave 1.5s infinite ease-in-out;
+  }
+  
+  .wave:nth-child(1) {
+    height: 10px;
+    animation-delay: 0s;
+  }
+  
+  .wave:nth-child(2) {
+    height: 16px;
+    animation-delay: 0.2s;
+  }
+  
+  .wave:nth-child(3) {
+    height: 12px;
+    animation-delay: 0.4s;
+  }
+  
+  .wave:nth-child(4) {
+    height: 18px;
+    animation-delay: 0.6s;
+  }
+  
+  /* Animação das ondas */
+  @keyframes wave {
+    0%, 100% {
+      transform: scaleY(0.5);
+      opacity: 0.7;
+    }
+    50% {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+  }
+  
+  /* Versão compacta */
+ /* Versão compacta atualizada para estilo Spotify */
+.botao-musica.compact {
+    padding: 0;
+    border-radius: 50%;
+    width: 56px;   /* um pouco maior, padrão Spotify */
+    height: 56px;
+    background-color: #1DB954; /* verde Spotify */
+    box-shadow: 0 4px 15px rgba(29, 185, 84, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .botao-musica.compact:hover,
+  .botao-musica.compact:focus {
+    background-color: #1ed760; /* verde claro no hover */
+    box-shadow: 0 6px 20px rgba(30, 215, 96, 0.7);
+    outline: none;
+  }
+  
+  .botao-musica.compact .play-button {
+    margin: 0;
+    width: 24px;
+    height: 24px;
+    fill: white; /* se for svg */
+  }
+  
+  /* Versão apenas ícone, transformada no estilo Spotify (botão redondo verde) */
+  .music-icon {
+    width: 56px;
+    height: 56px;
+    background-color: #1DB954;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(29, 185, 84, 0.5);
+    border: none;
+  }
+  
+  .music-icon:hover {
+    background-color: #1ed760;
+    box-shadow: 0 6px 20px rgba(30, 215, 96, 0.7);
+    transform: translateY(-2px) scale(1.05);
+  }
+  
+  /* Caso queira manter a música nota em branco no centro */
+  .music-note,
+  .music-note::before,
+  .music-note::after,
+  .music-note .note-flag {
+    background: white !important;
+  }
+  
+  /* Ajuste para o ícone SVG play (se usar SVG) */
+  .music-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: white;
+    pointer-events: none;
+  }
+  /* Mensagem de Amor */
+  .mensagem-amor {
+    display: none;
+    margin: 30px 0;
+    animation: fadeInScale 2s ease-out;
+  }
+  
+  /* Carta */
+  .carta {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 700px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(255, 182, 193, 0.3);
+    position: relative;
+  }
+  
+  .carta::before {
+    content: '💕';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 2em;
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .carta h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.2em;
+    color: #d6336c;
+    margin-bottom: 20px;
+  }
+  
+  .carta p {
+    font-size: 1.1em;
+    color: #6b021b;
+    line-height: 1.8;
+    text-align: left;
+  }
+  
+  /* Galeria */
+  .galeria {
+    display: none;
+    margin: 40px 0;
+    animation: slideUp 1s ease-out;
+  }
+  
+  .galeria h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2em;
+    color: #d6336c;
+    margin-bottom: 30px;
+  }
+  
+  .fotos-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .foto-frame {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  .foto-frame:hover {
+    transform: translateY(-10px) rotate(2deg);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+  }
+  
+  .foto-frame img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    transition: all 0.3s ease;
+  }
+  
+  .foto-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3em;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+  
+  .foto-frame:hover .foto-overlay {
+    opacity: 1;
+  }
+  
+  .foto-frame:hover img {
+    filter: brightness(0.7);
+  }
+  
+  /* Frase Final */
+  .frase-final {
+    margin: 50px 0;
+  }
+  
+  .carta-final {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 182, 193, 0.2));
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 600px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(255, 105, 180, 0.3);
+  }
+  
+  .assinatura {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.4em;
+    color: #8b0000;
+    line-height: 1.6;
+  }
+  
+  /* Corações Animados */
+  .hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #ff69b4;
+    transform: rotate(45deg);
+    animation: floatHearts 15s infinite linear;
+    opacity: 0.6;
+  }
+  
+  .heart::before,
+  .heart::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #ff69b4;
+    border-radius: 50%;
+  }
+  
+  .heart::before {
+    top: -10px;
+    left: 0;
+  }
+  
+  .heart::after {
+    top: 0;
+    left: -10px;
+  }
+  
+  .heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+  .heart:nth-child(2) { left: 20%; animation-delay: -2s; }
+  .heart:nth-child(3) { left: 40%; animation-delay: -4s; }
+  .heart:nth-child(4) { left: 60%; animation-delay: -6s; }
+  .heart:nth-child(5) { left: 80%; animation-delay: -8s; }
+  .heart:nth-child(6) { left: 90%; animation-delay: -10s; }
+  
+  /* Coração voando (novo) */
+  @keyframes voarCoracao {
+    0% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-150px) scale(1.5);
+    }
+  }
+  
+  .coracao-extra {
+    position: absolute;
+    font-size: 2em;
+    animation: voarCoracao 3s ease-out forwards;
+    z-index: 1;
+    pointer-events: none;
+  }
+  
+  /* Animações auxiliares */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInScale {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes pulseGlow {
+    0%, 100% {
+      text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff69b4;
+    }
+    50% {
+      text-shadow: 0 0 20px #ff1493, 0 0 30px #ff1493;
+    }
+  }
+  
+  @keyframes heartBeat {
+    0%, 100% {
+      transform: scale(1);
+    }
+    25% {
+      transform: scale(1.1);
+    }
+    50% {
+      transform: scale(0.95);
+    }
+    75% {
+      transform: scale(1.05);
+    }
+  }
+  
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+     50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  @keyframes floatHearts {
+    from {
+      transform: translateY(100vh) rotate(0deg);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(-10vh) rotate(360deg);
+      opacity: 0;
+    }
+  }

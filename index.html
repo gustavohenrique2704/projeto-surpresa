@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Para Ana ❤️</title>
+  <link rel="stylesheet" href="pagina.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <!-- Corações animados -->
+  <div class="hearts-container">
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+    <div class="heart"></div>
+  </div>
+
+  <!-- Música de fundo (corrigida) -->
+  <audio id="backgroundMusic" loop>
+    <source src="c:\Users\PC\Downloads\Tyler, The Creator - See You Again (Audio) ft. Kali Uchis.mp3" type="audio/mpeg" />
+
+
+  </audio>
+
+  <div class="container">
+    <h1 class="titulo-principal">
+      <span class="texto-animado">Feliz Dia dos Namorados</span>
+      <span class="nome-especial">Ana julia</span>
+      <span class="coracao-pulsante">💗</span>
+    </h1>
+
+    <div class="botao-container">
+      <button class="botao-magico" onclick="mostrarMensagem()">
+        <span>✨ Clique para descobrir a surpresa ✨</span>
+      </button>
+      
+      <button class="botao-musica" onclick="toggleMusica()">
+        <span id="musicaIcon">🎵</span>
+      </button>
+    </div>
+    
+
+    <div id="mensagem" class="mensagem-amor">
+      <div class="carta">
+        <h2>Minha querida Ana 💕</h2>
+        <p>
+          Desde que você entrou na minha vida, tudo ficou mais bonito e colorido. 
+          voce é muito especial para mim cada dia vem sendo melhor junto com voce e.
+          Cada momento, cada risada e cada sorriso ao seu lado é um presente.
+          Esta é uma pequena surpresa para te lembrar o quanto você é especial e única para mim. 💖
+        </p>
+      </div>
+    </div>
+
+    <div class="galeria" id="galeria">
+      <h3>Nossos Momentos Especiais 📸</h3>
+      <div class="fotos-container">
+        <div class="foto-frame">
+          <img src="\Users\PC\Downloads\foto2.jpeg" alt="Nossa foto 1" />
+          <div class="foto-overlay">💕</div>
+        </div>
+        <div class="foto-frame">
+          <img src="c:\Users\PC\Downloads\foto maxima.jpeg" alt="Nossa foto 2" />
+          <div class="foto-overlay">💖</div>
+        </div>
+        <div class="foto-frame">
+          <img src="c:\Users\PC\Downloads\foto 3.jpeg" alt="Nossa foto 3" />
+          <div class="foto-overlay">💗</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="frase-final">
+      <div class="carta-final">
+        <p class="assinatura">
+          Você é muito especial pra mim, uma inspiração, minha felicidade.
+          <br>
+          <strong>gosto muito de voce, Ana! 💌</strong>
+          <br><br>
+          <em>Com carinho,<br>Henrique ❤️</em>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let musicaTocando = false;
+    const musica = document.getElementById('backgroundMusic');
+    
+    function mostrarMensagem() {
+      const mensagem = document.getElementById("mensagem");
+      const galeria = document.getElementById("galeria");
+      
+      mensagem.style.display = "block";
+      
+      // Mostrar galeria após a mensagem
+      setTimeout(() => {
+        galeria.style.display = "block";
+        galeria.style.animation = "slideUp 1s ease-out";
+      }, 2000);
+      
+      // Criar mais corações quando clicar
+      criarCoracoesExtras();
+    }
+    
+    function toggleMusica() {
+      const icon = document.getElementById('musicaIcon');
+      
+      if (musicaTocando) {
+        musica.pause();
+        icon.textContent = '🎵';
+        musicaTocando = false;
+      } else {
+        musica.play();
+        icon.textContent = '';
+        musicaTocando = true;
+      }
+    }
+    
+    function criarCoracoesExtras() {
+  const carta = document.querySelector('.carta');
+  const cartaTop = carta.getBoundingClientRect().top + window.scrollY;
+
+  for (let i = 0; i < 10; i++) {
+    setTimeout(() => {
+      const coracao = document.createElement('div');
+      coracao.innerHTML = '';
+      coracao.style.position = 'absolute';
+      coracao.style.left = Math.random() * 80 + 10 + 'vw'; // posição horizontal aleatória mais centralizada
+      coracao.style.top = cartaTop + 100 + 'px'; // começa 100px abaixo do topo da carta
+      coracao.style.fontSize = '2em';
+      coracao.style.animation = 'voarCoracao 3s ease-out forwards';
+      coracao.style.zIndex = '1';
+      coracao.style.pointerEvents = 'none';
+
+      document.body.appendChild(coracao);
+
+      setTimeout(() => {
+        coracao.remove();
+      }, 3000);
+    }, i * 200);
+  }
+}
+  </script>
+</body>
+</html>
+
